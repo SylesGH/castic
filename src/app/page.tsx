@@ -265,6 +265,16 @@ export default function Home() {
 			>
 				Louis Buton
 			</button>
+			<div className="my-20 p-3 poppins">
+				<div className="flex items-center justify-around">
+					{/* <Form action="/" replace>
+						<input name="s" type="search" className="appearance-none outline-0 border-2 border-neutral-200/50 rounded-full px-2" />
+						<button type="submit">
+							<MagnifyingGlassIcon size={20} weight="bold" />
+						</button>
+					</Form>
+					<div>Filter/Sort</div> */}
+				</div>
 				<div className="flex flex-wrap w-full h-full justify-center gap-3">
 					{cardInformation.map((card, index) => (
 						<Card
@@ -279,5 +289,6 @@ export default function Home() {
 					))}
 				</div>
 			</div>
+		</div>
 	);
 }
