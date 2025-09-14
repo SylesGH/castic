@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Badge from "./badge";
+import Badge from "@/app/components/badge";
 import clsx from "clsx";
 import { HeartBreakIcon, HeartIcon } from "@phosphor-icons/react/dist/ssr";
 import { useState } from "react";
@@ -53,13 +53,13 @@ export default function Card({
 	return (
 		<div
 			className={clsx(
-				"aspect-[9/13] bg-neutral-900 relative overflow-hidden *:duration-150",
+				"aspect-[9/13] bg-neutral-900 relative overflow-hidden *:duration-150 select-none",
 				size == "small" &&
-					"w-40 rounded-xl border-2 border-neutral-100/10",
+					"w-40 rounded-xl border-2 border-neutral-100/10 hover:scale-105 transition",
 				size == "medium" &&
-					"w-60 rounded-3xl border-[1px] border-neutral-100/10",
+					"w-60 rounded-3xl border border-neutral-100/10",
 				size == "large" &&
-					"w-80 rounded-3xl border-[1px] border-neutral-500/20"
+					"w-80 rounded-3xl border border-neutral-500/20"
 			)}
 		>
 			<div className={clsx("w-full h-full", size == "small" && "hidden")}>
@@ -82,19 +82,6 @@ export default function Card({
 				/>
 			</div>
 			<div className="group/card w-full h-full absolute top-0 left-0 p-2 flex flex-col gap-2">
-				{/* Skeleton */}
-				{/* {size == "small" && (
-					<div className="w-full h-full absolute top-0 left-0 bg-gradient-to-br from-neutral-900 from-20% via-neutral-700 to-80% to-neutral-900 animate-pulse"></div>
-				)} */}
-				{/* Text Background */}
-				<div
-					className={clsx(
-						"bg-gradient-to-t from-neutral-900 mix-blend-luminosity from-30% to-neutral-100/0 absolute h-full w-full top-0 left-0",
-						size == "small" &&
-							" z-10 translate-y-1/2 opacity-0 group-hover/card:opacity-100 group-hover/card:translate-y-0 duration-150",
-						size !== "small" && "hidden"
-					)}
-				></div>
 				{/* Content Wrapper */}
 				<div
 					className={clsx(
@@ -149,11 +136,21 @@ export default function Card({
 						</label>
 					</div>
 				</div>
+
+				{/* Text Background */}
+				<div
+					className={clsx(
+						"bg-gradient-to-t from-neutral-900 mix-blend-luminosity from-30% to-neutral-100/0 absolute h-full w-full top-0 left-0",
+						size == "small" &&
+							"translate-y-1/2 opacity-0 group-hover/card:opacity-100 group-hover/card:translate-y-0 duration-150",
+						size !== "small" && "hidden"
+					)}
+				></div>
 				{/* Content */}
 				<div
 					className={clsx(
 						"flex flex-col relative",
-						size == "small" && "justify-end h-full gap-2 z-10",
+						size == "small" && "justify-end h-full gap-2 ",
 						size == "medium" && "justify-between h-36",
 						size == "large" && "justify-between h-36"
 					)}
@@ -166,7 +163,7 @@ export default function Card({
 						)}
 					>
 						{/* Favorite sm */}
-						<label className="group/button absolute flex items-center justify-center h-8 rounded-full aspect-square border-2 border-neutral-200/50 hover:border-neutral-200/50 bg-neutral-500/10  hover:bg-neutral-400/60 backdrop-blur-xs -translate-y-10 group-hover/card:translate-y-0 has-[input:checked]:translate-y-0 has-[input:checked]:group-hover/card:bg-neutral-400/60 duration-250 ease-in-out has-[input:checked]:bg-neutral-500/0 has-[input:checked]:border-neutral-200/0 cursor-pointer mix-blend-exclusion will-change-transform">
+						<label className="group/button hover:scale-110 absolute flex items-center justify-center h-8 rounded-full aspect-square border-2 border-neutral-200/50 hover:border-neutral-200/50 bg-neutral-500/10  hover:bg-neutral-400/60 backdrop-blur-xs -translate-y-10 group-hover/card:translate-y-0 has-[input:checked]:translate-y-0 has-[input:checked]:group-hover/card:bg-neutral-400/60 duration-250 ease-in-out has-[input:checked]:bg-neutral-500/0 has-[input:checked]:border-neutral-200/0 cursor-pointer mix-blend-exclusion will-change-transform">
 							<input
 								type="checkbox"
 								className="peer appearance-none absolute inset-0 w-full h-full opacity-0 cursor-pointer"
